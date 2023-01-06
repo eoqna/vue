@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div id="screen">{{msg }}</div>
+        <div id="screen" v-bind:class="state">{{msg}}</div>
         <div>
-            <div>평균 시간 : {{ }}</div>
+            <div>평균 시간 : {{}}</div>
             <button @click="onReset">리셋</button>
         </div>
     </div>
@@ -25,6 +25,20 @@
     };
 </script>
 
-<style scoped>
-
+<style>
+#screen {
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    user-select: none;
+}
+#screen.waiting {
+    background-color: aqua;
+}
+#screen.ready {
+    background-color: red;
+}
+#screen.now {
+    background-color: greenyellow;
+}
 </style>
