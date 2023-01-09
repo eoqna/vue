@@ -1,7 +1,8 @@
 <template>
     <div>
-        <table-component :table-data="tableData"></table-component>
         <div>{{turn}}님의 턴입니다.</div>
+        <table-component :table-data="tableData"></table-component>
+        <div v-if="winner">{{winner}}님의 승리입니다!</div>
     </div>
 </template>
 
@@ -19,14 +20,17 @@ import TableComponent from './TableComponent'
                     ['', '', ''],
                 ],
                 turn: 'O',
-
+                winner: '',
             };
         },
         computed: {
 
         },
         methods: {
-
+            onChangeData() {
+                // this.tableData[1][0] = 'X'; 작동하지 않음
+                this.$set(this.tableData[1], 0, 'X') //Vue.set과 동일
+            }
         },
         mounted() {
 
